@@ -24,6 +24,13 @@ def clear_tasks():
     tasks.clear()
     print("All tasks cleared!")
 
+def mark_done(index):
+    if 0 < index <= len(tasks):
+        tasks[index - 1] = tasks[index - 1] + " (Done)"
+        print(f"Task marked as done!")
+    else:
+        print("Invalid task number.")
+
 def main():
     print("============================")
     print("   Welcome to To-Do App!   ")
@@ -34,9 +41,10 @@ def main():
         print("2. Add a task")
         print("3. Remove a task")
         print("4. Clear all tasks")
-        print("5. Exit")
+        print("5. Mark a task as done")
+        print("6. Exit")
 
-        choice = input("\nEnter your choice (1-5): ")
+        choice = input("\nEnter your choice (1-6): ")
 
         if choice == "1":
             show_tasks()
@@ -50,10 +58,14 @@ def main():
         elif choice == "4":
             clear_tasks()
         elif choice == "5":
+            show_tasks()
+            index = int(input("Enter task number to mark as done: "))
+            mark_done(index)
+        elif choice == "6":
             print("\nGoodbye! Stay productive!")
             break
         else:
-            print("Invalid choice. Please enter 1-5.")
+            print("Invalid choice. Please enter 1-6.")
 
 if __name__ == "__main__":
     main()
